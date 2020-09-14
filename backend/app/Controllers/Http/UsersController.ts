@@ -5,7 +5,7 @@ import User from "App/Models/User";
 export default class UsersController {
 
     async index(): Promise<User[]> {
-        return await User.query().preload('campaigns')
+        return await User.query().preload('campaigns').preload('character')
     }
 
     async store ({ request }: HttpContextContract ) {

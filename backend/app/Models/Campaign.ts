@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import { CampaignDTO } from 'Contracts/dto/CampaignDTO'
+import Character from './Character'
 
 export default class Campaign extends BaseModel {
   @column({ isPrimary: true })
@@ -8,6 +9,9 @@ export default class Campaign extends BaseModel {
   
   @column()
   public dmId: number
+
+  @hasMany( () => Character, { foreignKey: 'campId' } )
+  public character: HasMany<typeof Character>
 
   @column()
   public name: string

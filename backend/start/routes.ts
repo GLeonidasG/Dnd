@@ -6,3 +6,4 @@ Route.get('/', async () => {
 
 Route.resource('users', 'UsersController').apiOnly()
 Route.resource('campaign', 'CampaignsController').apiOnly()
+Route.resource('characters', 'CharactersController').apiOnly()

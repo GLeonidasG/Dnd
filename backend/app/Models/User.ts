@@ -2,6 +2,7 @@ import { DateTime } from 'luxon'
 import { BaseModel, column, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
 import Campaign from './Campaign'
 import { UserDTO } from 'Contracts/dto/UserDTO'
+import Character from './Character'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -18,6 +19,9 @@ export default class User extends BaseModel {
 
   @hasMany( () => Campaign, { foreignKey: 'dmId' } )
   public campaigns: HasMany<typeof Campaign>
+
+  @hasMany( () => Character, { foreignKey: 'userId' } )
+  public character: HasMany<typeof Character>
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

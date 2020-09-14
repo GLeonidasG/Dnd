@@ -4,7 +4,7 @@ import Campaign from "App/Models/Campaign";
 export default class CampaignsController {
 
     async index () : Promise<Campaign[]> {
-        return await Campaign.all()
+        return await Campaign.query().preload('character')
     }
 
     async store ( { request }:HttpContextContract ) {
