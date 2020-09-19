@@ -8,29 +8,19 @@ export default class CharactersController {
   }
 
   async store({ request }: HttpContextContract): Promise<void> {
-    const char = request.only([
-      "campId",
-      "userId",
-      "name",
-      "str",
-      "dex",
-      "con",
-      "int",
-      "wis",
-      "cha",
-      "totalHp",
-      "currentHp",
-      "weaponId",
-      "armorId",
-      "leftHand",
-      "isAmbidextrous",
-      "initiative",
-      "proficiencyBonus",
-      "armorClass",
-      "movement",
-      "deathSuccess",
-      "deathFail",
-    ]) as CharacterDTO;
+    const char = request.post() as CharacterDTO;
     await new Character().init(char).save()
+  }
+
+  async update({ request, params }: HttpContextContract): Promise<void> {
+    const char = request.post() as CharacterDTO;
+    const { id } = params
+    await Character.updateOrCreate({id: Number(id)}, char)
+  }
+
+  async destroy( { params }: HttpContextContract ):Promise<void> {
+    const { id } = params
+    const char = await Character.find(Number(id))
+    await char?.delete()
   }
 }
