@@ -6,8 +6,18 @@ export default class Characters extends BaseSchema {
   public async up () {
   this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.integer ('camp_id').references('campaign.id')
-      table.integer ('user_id').references('user.id')
+
+      table.integer ('camp_id')
+        .references('campaigns.id')
+        .onDelete('CASCADE')
+
+      table.integer ('user_id')
+      .unsigned()
+
+      table.foreign('user_id')
+        .references('users.id')
+        .onDelete('CASCADE')
+
       table.string ('name')
       table.integer ('str')
       table.integer ('dex')

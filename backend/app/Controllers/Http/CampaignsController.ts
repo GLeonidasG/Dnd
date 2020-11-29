@@ -12,4 +12,15 @@ export default class CampaignsController {
         await new Campaign().init(camp).save()
     }
 
+    async update ( { request, params }: HttpContextContract ): Promise<void> {
+        const camp = request.get()
+        const { id } = params
+        await Campaign.updateOrCreate({ id: Number(id) }, camp)
+    }
+
+    async destroy ( { params }: HttpContextContract ) : Promise<void> {
+        const { id } = params
+        const camp = await Campaign.find(Number(id))
+        await camp?.delete()
+    }
 }

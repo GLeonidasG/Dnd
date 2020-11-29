@@ -6,11 +6,11 @@ import Character from './Character'
 export default class Campaign extends BaseModel {
   @column({ isPrimary: true })
   public id: number
-  
+
   @column()
   public dmId: number
 
-  @hasMany( () => Character, { foreignKey: 'campId' } )
+  @hasMany( () => Character, { foreignKey: 'camp_id' } )
   public character: HasMany<typeof Character>
 
   @column()

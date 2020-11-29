@@ -17,10 +17,10 @@ export default class User extends BaseModel {
   @column()
   public email: string
 
-  @hasMany( () => Campaign, { foreignKey: 'dmId' } )
+  @hasMany( () => Campaign, { foreignKey: 'dm_id' } )
   public campaigns: HasMany<typeof Campaign>
 
-  @hasMany( () => Character, { foreignKey: 'userId' } )
+  @hasMany( () => Character, { foreignKey: 'user_id' } )
   public character: HasMany<typeof Character>
 
   @column.dateTime({ autoCreate: true })
