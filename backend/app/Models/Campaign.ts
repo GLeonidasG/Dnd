@@ -19,6 +19,9 @@ export default class Campaign extends BaseModel {
   @column()
   public description: string
 
+  @column()
+  public notes: string
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
