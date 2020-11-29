@@ -7,10 +7,10 @@ export default class Character extends BaseModel {
   public id: number;
 
   @column()
-  public campId: number;
+  public camp_id: number;
 
   @column()
-  public userId: number;
+  public user_id: number;
 
   @column()
   public name: string;
@@ -76,8 +76,8 @@ export default class Character extends BaseModel {
   public updatedAt: DateTime;
 
   public init(char: CharacterDTO): Character {
-    this.campId = char.campId;
-    this.userId = char.userId;
+    this.camp_id = char.campId;
+    this.user_id = char.userId;
     this.name = char.name;
     this.str = char.str;
     this.dex = char.dex;

@@ -7,8 +7,8 @@ export default class Campaign extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
-  @column()
-  public dmId: number
+  @column({ columnName: 'dm_id' })
+  public dm_id: number
 
   @hasMany( () => Character, { foreignKey: 'camp_id' } )
   public character: HasMany<typeof Character>
@@ -26,7 +26,7 @@ export default class Campaign extends BaseModel {
   public updatedAt: DateTime
 
   init ( camp: CampaignDTO ): Campaign {
-    this.dmId = camp.dmId
+    this.dm_id = camp.dmId
     this.name = camp.name
     this.description = camp.description
     return this
